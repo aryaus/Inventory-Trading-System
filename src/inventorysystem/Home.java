@@ -34,15 +34,15 @@ public class Home extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanelMenu = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jLabelHome = new javax.swing.JLabel();
+        jLabelClient = new javax.swing.JLabel();
+        jLabelTransaction = new javax.swing.JLabel();
+        jLabelInward = new javax.swing.JLabel();
+        jLabelPrint = new javax.swing.JLabel();
+        jLabelSearch = new javax.swing.JLabel();
+        jLabelAnalytical = new javax.swing.JLabel();
+        jLabelRefresh = new javax.swing.JLabel();
+        jLabelLogout = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -62,6 +62,7 @@ public class Home extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("INVENTORY : Home");
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -99,7 +100,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHeaderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(124, 124, 124))
         );
@@ -117,47 +118,47 @@ public class Home extends javax.swing.JFrame {
         jPanelMenu.setBackground(new java.awt.Color(51, 102, 255));
         jPanelMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Home.png"))); // NOI18N
-        jLabel3.setText("Home");
-        jLabel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabelHome.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        jLabelHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Home.png"))); // NOI18N
+        jLabelHome.setText("Home");
+        jLabelHome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Client.png"))); // NOI18N
-        jLabel4.setText("Client");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelClient.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        jLabelClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Client.png"))); // NOI18N
+        jLabelClient.setText("Client");
+        jLabelClient.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                jLabelClientMouseClicked(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/money.png"))); // NOI18N
-        jLabel5.setText("Transaction");
+        jLabelTransaction.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        jLabelTransaction.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/money.png"))); // NOI18N
+        jLabelTransaction.setText("Transaction");
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/market.png"))); // NOI18N
-        jLabel6.setText("Inward Data");
+        jLabelInward.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        jLabelInward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/market.png"))); // NOI18N
+        jLabelInward.setText("Inward Data");
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/print.png"))); // NOI18N
-        jLabel7.setText("Print");
+        jLabelPrint.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        jLabelPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/print.png"))); // NOI18N
+        jLabelPrint.setText("Print");
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/search.png"))); // NOI18N
-        jLabel8.setText("Search");
+        jLabelSearch.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        jLabelSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/search.png"))); // NOI18N
+        jLabelSearch.setText("Search");
 
-        jLabel9.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Analytical Statistics.png"))); // NOI18N
-        jLabel9.setText("Analytical Statistics");
+        jLabelAnalytical.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        jLabelAnalytical.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Analytical Statistics.png"))); // NOI18N
+        jLabelAnalytical.setText("Analytical Statistics");
 
-        jLabel10.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/refresh.png"))); // NOI18N
-        jLabel10.setText("Refresh");
+        jLabelRefresh.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        jLabelRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/refresh.png"))); // NOI18N
+        jLabelRefresh.setText("Refresh");
 
-        jLabel11.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/logout.png"))); // NOI18N
-        jLabel11.setText("Log out");
+        jLabelLogout.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        jLabelLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/logout.png"))); // NOI18N
+        jLabelLogout.setText("Log out");
 
         javax.swing.GroupLayout jPanelMenuLayout = new javax.swing.GroupLayout(jPanelMenu);
         jPanelMenu.setLayout(jPanelMenuLayout);
@@ -168,17 +169,17 @@ public class Home extends javax.swing.JFrame {
                     .addGroup(jPanelMenuLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabelRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelAnalytical, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                            .addComponent(jLabelSearch, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelPrint, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelInward, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelTransaction, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelHome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelClient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMenuLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addGap(56, 56, 56))
@@ -188,28 +189,28 @@ public class Home extends javax.swing.JFrame {
             .addGroup(jPanelMenuLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jLabelHome)
                     .addComponent(jLabel13))
                 .addGap(37, 37, 37)
-                .addComponent(jLabel4)
+                .addComponent(jLabelClient)
                 .addGap(42, 42, 42)
-                .addComponent(jLabel5)
+                .addComponent(jLabelTransaction)
                 .addGap(41, 41, 41)
-                .addComponent(jLabel6)
+                .addComponent(jLabelInward)
                 .addGap(37, 37, 37)
-                .addComponent(jLabel7)
+                .addComponent(jLabelPrint)
                 .addGap(45, 45, 45)
-                .addComponent(jLabel8)
+                .addComponent(jLabelSearch)
                 .addGap(41, 41, 41)
-                .addComponent(jLabel9)
+                .addComponent(jLabelAnalytical)
                 .addGap(49, 49, 49)
-                .addComponent(jLabel10)
+                .addComponent(jLabelRefresh)
                 .addGap(48, 48, 48)
-                .addComponent(jLabel11)
+                .addComponent(jLabelLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel4.getAccessibleContext().setAccessibleName("     Client");
+        jLabelClient.getAccessibleContext().setAccessibleName("     Client");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -228,14 +229,14 @@ public class Home extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,8 +262,7 @@ public class Home extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanelHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -292,11 +292,11 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void jLabelClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelClientMouseClicked
         this.dispose();
         Client c = new Client();
         c.setVisible(true);
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_jLabelClientMouseClicked
 
     /**
      * @param args the command line arguments
@@ -335,21 +335,21 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAnalytical;
+    private javax.swing.JLabel jLabelClient;
+    private javax.swing.JLabel jLabelHome;
+    private javax.swing.JLabel jLabelInward;
+    private javax.swing.JLabel jLabelLogout;
+    private javax.swing.JLabel jLabelPrint;
+    private javax.swing.JLabel jLabelRefresh;
+    private javax.swing.JLabel jLabelSearch;
+    private javax.swing.JLabel jLabelTransaction;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
