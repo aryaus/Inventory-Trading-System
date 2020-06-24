@@ -5,6 +5,12 @@
  */
 package inventorysystem;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ARYA
@@ -14,8 +20,10 @@ public class Client extends javax.swing.JFrame {
     /**
      * Creates new form Client
      */
+    MySQLConnection myc;
     public Client() {
         initComponents();
+       myc=new MySQLConnection();
     }
 
     /**
@@ -60,12 +68,14 @@ public class Client extends javax.swing.JFrame {
         jTextFieldAddress = new javax.swing.JTextField();
         jDateChooserDate = new com.toedter.calendar.JDateChooser();
         jPanel6 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jButtonSave = new javax.swing.JButton();
+        jButtonDelete = new javax.swing.JButton();
+        jButtonUpdate = new javax.swing.JButton();
+        jButtonClear = new javax.swing.JButton();
+        jButtonPrint = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("INVENTORY: Client");
@@ -317,7 +327,7 @@ public class Client extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel7)
@@ -336,25 +346,30 @@ public class Client extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16), new java.awt.Color(0, 102, 204))); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/save.png"))); // NOI18N
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/save.png"))); // NOI18N
+        jButtonSave.setText("Save");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSaveActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/001-remove.png"))); // NOI18N
-        jButton2.setText("Delete");
+        jButtonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/001-remove.png"))); // NOI18N
+        jButtonDelete.setText("Delete");
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/002-updated.png"))); // NOI18N
-        jButton3.setText("Update");
+        jButtonUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/002-updated.png"))); // NOI18N
+        jButtonUpdate.setText("Update");
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/004-clear-format.png"))); // NOI18N
-        jButton4.setText("Clear");
+        jButtonClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/004-clear-format.png"))); // NOI18N
+        jButtonClear.setText("Clear");
+        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearActionPerformed(evt);
+            }
+        });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/003-printer.png"))); // NOI18N
-        jButton5.setText("Print");
+        jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/003-printer.png"))); // NOI18N
+        jButtonPrint.setText("Print");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -363,40 +378,58 @@ public class Client extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3))
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButtonUpdate))
+                    .addComponent(jButtonClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonPrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jButton1)
+                .addComponent(jButtonSave)
                 .addGap(62, 62, 62)
-                .addComponent(jButton2)
+                .addComponent(jButtonDelete)
                 .addGap(65, 65, 65)
-                .addComponent(jButton3)
+                .addComponent(jButtonUpdate)
                 .addGap(70, 70, 70)
-                .addComponent(jButton4)
-                .addGap(74, 74, 74)
-                .addComponent(jButton5)
+                .addComponent(jButtonClear)
+                .addGap(64, 64, 64)
+                .addComponent(jButtonPrint)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -480,9 +513,69 @@ public class Client extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldAddressActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+        String cid = jTextFieldClientId.getText().toString();
+        String cname = jTextFieldClientName.getText().toString();
+        String caddress = jTextFieldAddress.getText().toString();
+        String ccontact = jTextFieldContactNumber.getText().toString();
+        Date cdate = jDateChooserDate.getDate();
+        
+      
+        //control the entered data
+        if(cid.trim().equals("") || cname.trim().equals("") || caddress.trim().equals("") 
+                || ccontact.trim().equals("")){
+            JOptionPane.showMessageDialog(null, "Please fill all the filed!");
+            
+        }else if (cdate==null){
+            JOptionPane.showMessageDialog(null, "Please choose the date", "Error",JOptionPane.ERROR_MESSAGE);
+        }
+        // after entered data has been checked, add the data to the database
+        else {
+            Connection conn = myc.getCon();
+            PreparedStatement ps;
+            ResultSet rs;
+            try{
+                // fine the may_id for client to update
+                String sql="select max_id from variable_table";
+                ps=conn.prepareStatement(sql);
+                rs=ps.executeQuery(sql);
+                int num = 0;
+                if (rs.next()){
+                    num = rs.getInt(1)+1;
+                }
+                java.sql.Date sqlDate = new java.sql.Date(jDateChooserDate.getDate().getTime());
+                sql = "insert into client(id,name,address,contact,_Date) values (?,?,?,?,?)";
+                ps=conn.prepareStatement(sql);
+                ps.setInt(1,Integer.parseInt(cid));
+                ps.setString(2, cname);
+                ps.setString(3,caddress);
+                ps.setString(4,ccontact);
+                ps.setDate(5,sqlDate);
+                
+                int i = ps.executeUpdate();
+                if( i >= 1){
+                    JOptionPane.showMessageDialog(null, "Save Successfully!");
+                    // clean the fields
+                    jButtonClearActionPerformed(evt);
+                } else {
+                     JOptionPane.showMessageDialog(null, "Error, Try again!");
+                }
+                
+            }catch(Exception e){
+                 JOptionPane.showMessageDialog(null, "Client Info Error"+e);
+            }
+             
+        }
+    }//GEN-LAST:event_jButtonSaveActionPerformed
+
+    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+         jTextFieldClientId.setText("");
+         jTextFieldClientName.setText("");
+         jTextFieldAddress.setText("");
+         jTextFieldContactNumber.setText("");
+         jDateChooserDate.setDate(null);
+         
+    }//GEN-LAST:event_jButtonClearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -520,11 +613,11 @@ public class Client extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonClear;
+    private javax.swing.JButton jButtonDelete;
+    private javax.swing.JButton jButtonPrint;
+    private javax.swing.JButton jButtonSave;
+    private javax.swing.JButton jButtonUpdate;
     private com.toedter.calendar.JDateChooser jDateChooserDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
@@ -554,6 +647,8 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanelHeader;
     private javax.swing.JPanel jPanelMenu;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFieldAddress;
     private javax.swing.JTextField jTextFieldClientId;
     private javax.swing.JTextField jTextFieldClientName;
