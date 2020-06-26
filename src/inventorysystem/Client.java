@@ -9,7 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -24,6 +27,31 @@ public class Client extends javax.swing.JFrame {
     public Client() {
         initComponents();
        myc=new MySQLConnection();
+       update_table(); // call this method to show the updated data in table
+    }
+    public void update_table(){
+        PreparedStatement ps;
+        ResultSet rs;
+        Connection conn = myc.getCon();
+        try{
+            String sql="select id,name,address,contact,_Date from Client";
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery(sql);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }finally {
+            try{
+                    if(conn!=null){
+                        conn.close();
+                        System.out.println("DB Disconnected");
+                    }
+                 
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Client_Information Error!" + e);
+                    Logger.getLogger(Client.class.getName()).log(Level.SEVERE,null,e);
+                }
+        }
     }
 
     /**
@@ -205,7 +233,7 @@ public class Client extends javax.swing.JFrame {
             jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMenuLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelHome)
                     .addComponent(jLabel13))
                 .addGap(37, 37, 37)
@@ -224,7 +252,7 @@ public class Client extends javax.swing.JFrame {
                 .addComponent(jLabelRefresh)
                 .addGap(48, 48, 48)
                 .addComponent(jLabelLogout)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -327,7 +355,7 @@ public class Client extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel7)
@@ -356,9 +384,19 @@ public class Client extends javax.swing.JFrame {
 
         jButtonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/001-remove.png"))); // NOI18N
         jButtonDelete.setText("Delete");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
 
         jButtonUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/002-updated.png"))); // NOI18N
         jButtonUpdate.setText("Update");
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
 
         jButtonClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/004-clear-format.png"))); // NOI18N
         jButtonClear.setText("Clear");
@@ -428,8 +466,8 @@ public class Client extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -453,14 +491,14 @@ public class Client extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -483,9 +521,9 @@ public class Client extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanelHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -493,11 +531,11 @@ public class Client extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1574, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1574, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -555,14 +593,29 @@ public class Client extends javax.swing.JFrame {
                 int i = ps.executeUpdate();
                 if( i >= 1){
                     JOptionPane.showMessageDialog(null, "Save Successfully!");
-                    // clean the fields
+                    
+                    // clean the after a successfully saved!
                     jButtonClearActionPerformed(evt);
-                } else {
+                    update_table(); // call this method to show the updated data in table
+                } 
+                else {
                      JOptionPane.showMessageDialog(null, "Error, Try again!");
                 }
                 
             }catch(Exception e){
                  JOptionPane.showMessageDialog(null, "Client Info Error"+e);
+            }
+           finally{
+                try{
+                    if(conn!=null){
+                        conn.close();
+                        System.out.println("DB Disconnected");
+                    }
+                 
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, cname + "Client_Information Error!" + e);
+                    Logger.getLogger(Client.class.getName()).log(Level.SEVERE,null,e);
+                }
             }
              
         }
@@ -576,6 +629,93 @@ public class Client extends javax.swing.JFrame {
          jDateChooserDate.setDate(null);
          
     }//GEN-LAST:event_jButtonClearActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        int p= JOptionPane.showConfirmDialog(null, "do you want to delete " 
+                + jTextFieldClientName.getText() + " client information",
+                "delete",JOptionPane.YES_NO_OPTION);
+        if (p==0){
+            PreparedStatement ps;
+            MySQLConnection myc = new MySQLConnection();
+            Connection conn = myc.getCon();
+            String sql = "delete from client where id=?";
+            try{
+                ps = conn.prepareStatement(sql);
+                ps.setString(1,jTextFieldClientId.getText());
+                ps.execute();
+                JOptionPane.showMessageDialog(null, jTextFieldClientName.getText() + " has been deleted!");
+                
+                update_table(); // show the table after delete the client again updated.
+                jButtonClearActionPerformed(evt);
+                
+            }catch(Exception e){
+                 JOptionPane.showMessageDialog(null, "Client Info delete Error"+e);
+            }
+           finally{
+                try{
+                    if(conn!=null){
+                        conn.close();
+                        System.out.println("DB Disconnected");
+                    }
+                 
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Client_Information delete Error!" + e);
+                    Logger.getLogger(Client.class.getName()).log(Level.SEVERE,null,e);
+                }
+            }
+        }
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        PreparedStatement ps;
+        MySQLConnection myc = new MySQLConnection();
+        Connection conn = myc.getCon();
+        
+        try{
+                String cname = jTextFieldClientName.getText().toString().trim();
+                String caddress = jTextFieldAddress.getText().toString().trim();
+                String cid = jTextFieldClientId.getText().toString().trim();
+                String ccontact = jTextFieldContactNumber.getText().toString().trim();
+                java.sql.Date cdate=new java.sql.Date(jDateChooserDate.getDate().getTime());
+                
+                String sql = "update client set name=? , address=?, contact=?, _Date = ? where id=?";
+                
+                ps = conn.prepareStatement(sql);
+                ps.setString(1,cname);
+                ps.setString(2,caddress);
+                ps.setString(3,ccontact);
+                ps.setDate(4,cdate);
+                ps.setInt(5,Integer.parseInt(cid));
+                int i = ps.executeUpdate();
+                
+                if(i >=1){
+                JOptionPane.showMessageDialog(null,"Client information has been Updated!"); 
+                
+                update_table(); // show the table after delete the client again updated.
+                jButtonClearActionPerformed(evt);
+                
+                }else{
+                    JOptionPane.showMessageDialog(null,"Update failed!");
+                }
+                                        
+                                
+            }catch(Exception e){
+                 JOptionPane.showMessageDialog(null, "Client Info delete Error"+e);
+            }
+           finally{
+                try{
+                    if(conn!=null){
+                        conn.close();
+                        System.out.println("DB Disconnected");
+                    }
+                 
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Client_Information delete Error!" + e);
+                    Logger.getLogger(Client.class.getName()).log(Level.SEVERE,null,e);
+                }
+            }
+        
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     /**
      * @param args the command line arguments

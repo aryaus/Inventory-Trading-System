@@ -19,7 +19,7 @@ public class MySQLConnection {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn= DriverManager.getConnection("jdbc:mysql://localhost/inventory?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Berlin","root","Arya914?");
-            JOptionPane.showMessageDialog(null,"Database Connection Successful! " + "MySQLConnect getconn method");
+            //JOptionPane.showMessageDialog(null,"Database Connection Successful! " + "MySQLConnect getconn method");
            
         }
         catch(Exception e){
